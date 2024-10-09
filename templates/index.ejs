@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: black;
+      color: green;
+      word-break: break-all;
+      letter-spacing: 0.05em;
+      overflow: hidden;
+    "
+  ></body>
+  <script>
+    const bodyEl = document.querySelector("body");
+    const source = new EventSource("/sse");
+    source.addEventListener("message", (e) => {
+      bodyEl.innerText += e.data;
+      window.scrollTo({
+        left: 0,
+        top: bodyEl.scrollHeight,
+        behavior: "smooth",
+      });
+    });
+  </script>
+</html>
