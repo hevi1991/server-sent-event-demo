@@ -33,7 +33,6 @@ fastify.get("/sse", async function handler(request, reply) {
       while (true) {
         await delay(Math.random() * 10);
         const data = Math.random() > 0.5 ? "1" : "0";
-        console.log("data: ", data);
         if (request.raw.destroyed) {
           fastify.log.info("request closed");
           return;
